@@ -1,25 +1,68 @@
-const apiUrl = 'https://corona.lmao.ninja/v2/countries'
-const cardContent = document.querySelector('.card__content');
+// GET THE INPUT VALUE FROM USER
+const form = document.querySelector('.form')
+const searchInput = document.querySelector('.search-input')
+const btnOk = document.querySelector('.btn')
 
-async function getStats() {
-    const res = await fetch(apiUrl)
+// searchInput.focus()
+
+form.addEventListener('submit', (e) => {
+    e.preventDefault()
+    // console.log(searchInput.value)
+    let nameOfCountry = searchInput.value
+    getCountryIso(nameOfCountry)
+    searchInput.value = ''
+})
+
+btnOk.addEventListener('click', (e) => {
+    if (searchInput.value.length < 3) return
+
+    e.preventDefault()
+    let nameOfCountry = searchInput.value
+    getCountryIso(nameOfCountry)
+    searchInput.value = ''
+})
+
+// GETTING THE REAL COUNTRY NAME FROM USER INPUT USING ANOTHER API AND PASSING THE VALUE TO getCovidCountry()
+const apiCountry = 'https://restcountries.eu/rest/v2/name/'
+
+async function getCountryIso(nameOfCountry) {
+    const res = await fetch(apiCountry + nameOfCountry)
     const data = await res.json()
 
-    // console.log(data[176])
-    createTable(data[176])
+    // console.log(data)
+    let countryName = data[0].name
+    // console.log('naziv zemlje', countryName)
+    getCovidCountry(countryName)
 }
 
-getStats()
+// API URL FOR GETTING COVID STATS BY COUNTRY
+const covidCountryURL = `https://corona.lmao.ninja/v2/countries/`
+
+async function getCovidCountry(countryName = "Serbia") {
+
+    const res = await fetch(covidCountryURL + countryName)
+    const data = await res.json()
+    // console.log(data)
+
+    setTimeout(() => {
+        // send data to createTable()
+        createTable(data)
+    }, 700);
+}
+getCovidCountry()
+
+// CREATING DESIGN FROM FETCHED DATA
+const cardContent = document.querySelector('.card__content');
 
 function createTable(data) {
 
     let { country, population, todayCases, todayDeaths, todayRecovered, cases, casesPerOneMillion, recovered, recoveredPerOneMillion, tests, active, deaths, deathsPerOneMillion, critical, criticalPerOneMillion } = data
 
-    console.log(data.countryInfo.flag)
+    // console.log(data.countryInfo.flag)
 
     const dataHTML = `
     <div class="card--title">
-            <h1>${country}</h1>
+             <h1>${country}</h1>
             <h2>Populacija: ${population.toLocaleString("sr", "RS")}</h2>
             <img src="${data.countryInfo.flag}" alt="">
         </div>
@@ -45,3 +88,4 @@ function createTable(data) {
     `
     cardContent.innerHTML = dataHTML
 }
+
