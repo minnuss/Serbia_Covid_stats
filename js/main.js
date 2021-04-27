@@ -29,9 +29,9 @@ async function getCountryIso(nameOfCountry) {
     const res = await fetch(apiCountry + nameOfCountry)
     const data = await res.json()
 
-    // console.log(data)
-    let countryName = data[0].name
-    // console.log('naziv zemlje', countryName)
+    console.log(data)
+    let countryName = data[0].alpha3Code
+    console.log('naziv zemlje', countryName)
     getCovidCountry(countryName)
 }
 
