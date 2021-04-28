@@ -6,9 +6,34 @@
   box-sizing: border-box;
 }
 
+:root {
+  --color-bg2: #161623;
+  --color-primary: #2c3e50;
+  --color-primary2: #ecf0f1;
+}
+
 html {
   font-size: 62.5%;
   font-family: 'Poppins', sans-serif;
+}
+
+body .card__content {
+  box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.1);
+  border-top: 1px solid rgba(255, 255, 255, 0.4);
+  border-left: 1px solid rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(5px);
+  color: var(--color-primary2);
+}
+
+body form input, body form .btn, body .card__content .card--title, body .card__content .card-daily, body .card__content .card-stats {
+  box-shadow: 2px 5px 15px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.1);
+  border-top: 0.5px solid rgba(255, 255, 255, 0.3);
+  border-left: 0.5px solid rgba(255, 255, 255, 0.3);
+  color: var(--color-primary2);
 }
 
 body {
@@ -18,8 +43,8 @@ body {
   flex-direction: column;
   min-height: 100vh;
   padding: 15px;
-  background-color: #ecf0f1;
-  color: #ecf0f1;
+  background-color: var(--color-bg2);
+  color: var(--color-primary);
 }
 
 body .card__content > * {
@@ -30,50 +55,44 @@ body form {
   width: 100%;
   display: flex;
   justify-content: center;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 }
 
 body form input {
-  background-color: #2c3e50;
-  color: #ecf0f1;
   border: none;
   outline: none;
-  border-radius: 4px;
+  border-radius: 10px;
   padding-left: 5px;
-  border: 1px solid #ecf0f1;
   font-size: 1.8rem;
   letter-spacing: 1px;
 }
 
 body form input::placeholder {
-  color: #ecf0f1;
+  color: var(--color-primary2);
 }
 
 body form .btn {
-  background-color: #2c3e50;
-  color: #ecf0f1;
+  color: var(--color-primary2);
   border: none;
   margin-left: 5px;
   padding: 5px 10px;
-  border-radius: 4px;
-  border: 1px solid #ecf0f1;
+  border-radius: 10px;
+  border: 1px solid var(--color-primary);
   font-size: 1.8rem;
+  cursor: pointer;
 }
 
 body .card__content {
   max-width: 35rem;
-  background-color: #2c3e50;
-  padding: 30px;
-  border-radius: 10px;
+  padding: 20px;
+  border-radius: 15px;
   font-size: 1.8rem;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
 body .card__content .card--title {
-  background-color: #3d566d;
   padding: 10px;
   border-radius: 7px;
   display: flex;
@@ -81,33 +100,10 @@ body .card__content .card--title {
   flex-direction: column;
 }
 
-body .card__content .card--title form {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
-
-body .card__content .card--title form input {
-  background-color: #2c3e50;
-  color: #ecf0f1;
-  border: none;
-  outline: none;
-  border-radius: 4px;
-  padding-left: 5px;
-}
-
-body .card__content .card--title form .btn {
-  background-color: #2c3e50;
-  color: #ecf0f1;
-  border: none;
-  margin-left: 5px;
-  padding: 5px 10px;
-  border-radius: 4px;
-}
-
 body .card__content .card--title h1 {
   text-align: center;
   font-size: 2.2rem;
+  font-weight: 600;
   margin: 5px 0;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -126,14 +122,14 @@ body .card__content .card--title img {
 }
 
 body .card__content .card-daily {
-  background-color: #3d566d;
-  padding: 10px 30px;
+  padding: 10px 20px;
   border-radius: 7px;
 }
 
 body .card__content .card-daily h1 {
   text-align: center;
   font-size: 1.7rem;
+  font-weight: 600;
   margin: 10px 0;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -147,8 +143,7 @@ body .card__content .card-daily h2 {
 }
 
 body .card__content .card-stats {
-  background-color: #3d566d;
-  padding: 10px 30px;
+  padding: 10px 20px;
   border-radius: 7px;
   margin-bottom: 0;
 }
@@ -156,6 +151,7 @@ body .card__content .card-stats {
 body .card__content .card-stats h1 {
   text-align: center;
   font-size: 1.7rem;
+  font-weight: 600;
   margin: 10px 0;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -174,7 +170,6 @@ body .card__content .card-stats h2 {
   }
   body .card__content {
     min-width: 28rem;
-    background-color: #2c3e50;
     padding: 20px;
   }
   body .card-daily {
