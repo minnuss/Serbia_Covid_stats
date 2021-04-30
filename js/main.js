@@ -22,6 +22,10 @@ btnOk.addEventListener('click', (e) => {
     searchInput.value = ''
 })
 
+// default values
+let betterPopulationNums = 7076372
+let capitalCity = 'Belgrade'
+
 // GETTING THE REAL COUNTRY NAME FROM USER INPUT USING ANOTHER API AND PASSING THE VALUE TO getCovidCountry()
 const apiCountry = 'https://restcountries.eu/rest/v2/name/'
 
@@ -29,9 +33,11 @@ async function getCountryIso(nameOfCountry) {
     const res = await fetch(apiCountry + nameOfCountry)
     const data = await res.json()
 
-    // console.log(data)
+    console.log(data)
     let countryName = data[0].alpha3Code
     // console.log('naziv zemlje', countryName)
+    betterPopulationNums = data[0].population
+    capitalCity = data[0].capital
     getCovidCountry(countryName)
 }
 
@@ -42,7 +48,7 @@ async function getCovidCountry(countryName = "Serbia") {
 
     const res = await fetch(covidCountryURL + countryName)
     const data = await res.json()
-    // console.log(data)
+    console.log(data)
 
     setTimeout(() => {
         // send data to createTable()
@@ -63,7 +69,8 @@ function createTable(data) {
     const dataHTML = `
     <div class="card--title">
              <h1>${country}</h1>
-            <h2>Populacija: ${population.toLocaleString("sr", "RS")}</h2>
+             <h2>Glavni grad: ${capitalCity}</h2>
+            <h2>Populacija: ${betterPopulationNums.toLocaleString("sr", "RS")}</h2>
             <img src="${data.countryInfo.flag}" alt="">
         </div>
         <div class="card-daily">
