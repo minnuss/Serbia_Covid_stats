@@ -33,12 +33,24 @@ async function getCountryIso(nameOfCountry) {
     const res = await fetch(apiCountry + nameOfCountry)
     const data = await res.json()
 
-    console.log(data)
-    let countryName = data[0].alpha3Code
-    // console.log('naziv zemlje', countryName)
-    betterPopulationNums = data[0].population
-    capitalCity = data[0].capital
-    getCovidCountry(countryName)
+    // console.log(data)
+    // console.log(nameOfCountry)
+
+    // hardcoded India country because of bad API result
+    if (nameOfCountry === 'india' || nameOfCountry === 'India' || nameOfCountry === 'indi') {
+        let countryName = 'India'
+        betterPopulationNums = data[1].population
+        capitalCity = data[1].capital
+        getCovidCountry(countryName)
+    } else {
+        // every other country results are good
+        let countryName = data[0].alpha3Code
+
+        // console.log('naziv zemlje', countryName)
+        betterPopulationNums = data[0].population
+        capitalCity = data[0].capital
+        getCovidCountry(countryName)
+    }
 }
 
 // API URL FOR GETTING COVID STATS BY COUNTRY
@@ -48,7 +60,7 @@ async function getCovidCountry(countryName = "Serbia") {
 
     const res = await fetch(covidCountryURL + countryName)
     const data = await res.json()
-    console.log(data)
+    // console.log(data)
 
     setTimeout(() => {
         // send data to createTable()
