@@ -17,8 +17,13 @@
 
 <body>
     <form class="form">
-        <input class="search-input" type="text" placeholder="Unesite ime zemlje">
-        <button class="btn">Ok</button>
+        <input class="search-input" list="suggestion-countries" type="text" placeholder="Unesite ime zemlje">
+        <datalist id="suggestion-countries">
+            <!-- <option value="Italy"></option>
+            <option value="Germany"></option> -->
+        </datalist>
+        <button type="submit" class="btn">Ok</button>
+
     </form>
     <section class="card__content">
         <!-- <div class="card--title">

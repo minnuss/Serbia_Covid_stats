@@ -5,31 +5,14 @@ const btnOk = document.querySelector('.btn')
 
 // searchInput.focus()
 
-form.addEventListener('submit', (e) => {
-    e.preventDefault()
-    // console.log(searchInput.value)
-    let nameOfCountry = searchInput.value
-    getCountryIso(nameOfCountry)
-    searchInput.value = ''
-})
-
-btnOk.addEventListener('click', (e) => {
-    if (searchInput.value.length < 3) return
-
-    e.preventDefault()
-    let nameOfCountry = searchInput.value
-    getCountryIso(nameOfCountry)
-    searchInput.value = ''
-})
-
 // default values
-let betterPopulationNums = 7076372
-let capitalCity = 'Belgrade'
+let betterPopulationNums = 0
+let capitalCity = ''
 
 // GETTING THE REAL COUNTRY NAME FROM USER INPUT USING ANOTHER API AND PASSING THE VALUE TO getCovidCountry()
 const apiCountry = 'https://restcountries.eu/rest/v2/name/'
 
-async function getCountryIso(nameOfCountry) {
+async function getCountryIso(nameOfCountry = "Serbia") {
     const res = await fetch(apiCountry + nameOfCountry)
     const data = await res.json()
 
@@ -52,6 +35,8 @@ async function getCountryIso(nameOfCountry) {
         getCovidCountry(countryName)
     }
 }
+
+getCountryIso()
 
 // API URL FOR GETTING COVID STATS BY COUNTRY
 const covidCountryURL = `https://corona.lmao.ninja/v2/countries/`
@@ -107,4 +92,45 @@ function createTable(data) {
     `
     cardContent.innerHTML = dataHTML
 }
+
+// EVENTS
+form.addEventListener('submit', (e) => {
+    e.preventDefault()
+    // console.log(searchInput.value)
+    let nameOfCountry = searchInput.value
+    getCountryIso(nameOfCountry)
+    searchInput.value = ''
+
+    searchInput.blur()
+})
+
+// GET COUNTRY NAME OPTIONS IN SEARCH INPUT WHEN USER IS TYPING
+const apiCountryName = 'https://restcountries.eu/rest/v2/name/'
+const dataListEl = document.getElementById('suggestion-countries')
+
+searchInput.addEventListener('input', async () => {
+    let searchValue = searchInput.value
+    // console.log(searchValue)
+
+    // Reset options every time user types new character
+    dataListEl.innerHTML = ''
+
+    let res = await fetch(apiCountryName + searchValue)
+    let data = await res.json()
+    // console.log(data)
+
+    // Check if there is more then 5 results, or less then 5
+    let length = data.length > 5 ? 5 : data.length
+
+    for (let i = 0; i < length; i++) {
+        // Country names from fetched results
+        let countryName = data[i].name
+        // console.log(countryName)
+
+        let optionEl = document.createElement('option')
+        optionEl.setAttribute('value', countryName)
+        dataListEl.appendChild(optionEl)
+    }
+
+})
 
