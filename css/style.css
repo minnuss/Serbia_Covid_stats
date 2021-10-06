@@ -107,6 +107,7 @@ body .card__content .card--title {
 }
 
 body .card__content .card--title h1 {
+  font-family: 'Roboto';
   text-align: center;
   font-size: 2.2rem;
   font-weight: 600;
@@ -118,8 +119,10 @@ body .card__content .card--title h1 {
 body .card__content .card--title h2 {
   text-align: center;
   font-size: 1.6rem;
+  font-weight: 400;
   margin: 0px 0 5px;
   letter-spacing: 0.7px;
+  opacity: 0.8;
 }
 
 body .card__content .card--title img {
@@ -133,19 +136,28 @@ body .card__content .card-daily {
 }
 
 body .card__content .card-daily h1 {
+  font-family: 'Roboto';
   text-align: center;
   font-size: 1.7rem;
-  font-weight: 600;
+  font-weight: 700;
   margin: 10px 0;
   text-transform: uppercase;
   letter-spacing: 1px;
 }
 
+body .card__content .card-daily h6 {
+  text-align: center;
+  margin-top: -10px;
+  opacity: 0.5;
+}
+
 body .card__content .card-daily h2 {
   text-align: left;
   font-size: 1.6rem;
+  font-weight: 400;
   margin: 5px 0;
   letter-spacing: 0.7px;
+  opacity: 0.8;
 }
 
 body .card__content .card-stats {
@@ -155,9 +167,10 @@ body .card__content .card-stats {
 }
 
 body .card__content .card-stats h1 {
+  font-family: 'Roboto';
   text-align: center;
   font-size: 1.7rem;
-  font-weight: 600;
+  font-weight: 700;
   margin: 10px 0;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -166,8 +179,10 @@ body .card__content .card-stats h1 {
 body .card__content .card-stats h2 {
   text-align: left;
   font-size: 1.6rem;
+  font-weight: 400;
   margin: 5px 0;
   letter-spacing: 0.7px;
+  opacity: 0.8;
 }
 
 @media (max-width: 350px) {

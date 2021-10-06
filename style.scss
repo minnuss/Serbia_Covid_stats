@@ -121,6 +121,7 @@ body {
       flex-direction: column;
 
       h1 {
+        font-family: 'Roboto';
         text-align: center;
         font-size: 2.2rem;
         font-weight: 600;
@@ -132,8 +133,10 @@ body {
       h2 {
         text-align: center;
         font-size: 1.6rem;
+        font-weight: 400;
         margin: 0px 0 5px;
         letter-spacing: 0.7px;
+        opacity: 0.8;
       }
 
       img {
@@ -148,19 +151,28 @@ body {
       border-radius: 7px;
 
       h1 {
+        font-family: 'Roboto';
         text-align: center;
         font-size: 1.7rem;
-        font-weight: 600;
+        font-weight: 700;
         margin: 10px 0;
         text-transform: uppercase;
         letter-spacing: 1px;
       }
 
+      h6 {
+        text-align: center;
+        margin-top: -10px;
+        opacity: 0.5;
+      }
+
       h2 {
         text-align: left;
         font-size: 1.6rem;
+        font-weight: 400;
         margin: 5px 0;
         letter-spacing: 0.7px;
+        opacity: 0.8;
       }
     }
 
@@ -171,9 +183,10 @@ body {
       margin-bottom: 0;
 
       h1 {
+        font-family: 'Roboto';
         text-align: center;
         font-size: 1.7rem;
-        font-weight: 600;
+        font-weight: 700;
         margin: 10px 0;
         text-transform: uppercase;
         letter-spacing: 1px;
@@ -182,8 +195,10 @@ body {
       h2 {
         text-align: left;
         font-size: 1.6rem;
+        font-weight: 400;
         margin: 5px 0;
         letter-spacing: 0.7px;
+        opacity: 0.8;
       }
     }
   }
