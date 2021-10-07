@@ -9,6 +9,7 @@ const btnOk = document.querySelector('.btn')
 let defaultCountry = 'serbia'
 let betterPopulationNums = 0
 let capitalCity = ''
+let nameOfCountry = searchInput.value
 
 // MANUALY ADDED COUNTRIES INFORMATION, BECAUSE API STOPPED WORKING FOR FREE, THEY ADDED MONTHLY SUBSCRIPTIONS
 let countries = [
@@ -351,7 +352,7 @@ function createTable(data, dataYesterday, data2DaysAgo) {
 form.addEventListener('submit', (e) => {
     e.preventDefault()
     // console.log(searchInput.value)
-    let nameOfCountry = searchInput.value
+    // let nameOfCountry = searchInput.value
 
     // GET COUNTRIES CAPITAL AND POPULATION FROM ARRAY OF COUNTRIES
     countries.find(c => {
@@ -382,6 +383,9 @@ searchInput.addEventListener('input', async () => {
     // get user input converted to toLowerCase
     let searchValue = searchInput.value.toLowerCase()
     // console.log(searchValue)
+
+    // set global variable nameOfCountry to fast input option, so search can change capital and population values
+    nameOfCountry = searchValue
 
     // Reset options every time user types new character
     dataListEl.innerHTML = ''
