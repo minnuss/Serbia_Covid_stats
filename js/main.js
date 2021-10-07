@@ -374,6 +374,33 @@ form.addEventListener('submit', (e) => {
 
 getCovidCountry()
 
+// GET COUNTRY NAME OPTIONS IN SEARCH INPUT WHEN USER IS TYPING
+const dataListEl = document.getElementById('suggestion-countries')
+
+searchInput.addEventListener('input', async () => {
+
+    // get user input converted to toLowerCase
+    let searchValue = searchInput.value.toLowerCase()
+    // console.log(searchValue)
+
+    // Reset options every time user types new character
+    dataListEl.innerHTML = ''
+
+    // filter out countries array for user inputs only
+    let countriesFilter = countries.filter(c => c.Country.toLowerCase().includes(searchValue))
+
+    // check new filtered array for user inputs only
+    for (let i = 0; i < countriesFilter.length; i++) {
+        // Country names from fetched results
+        let countryName = countriesFilter[i].Country
+        // console.log(countryName)
+
+        let optionEl = document.createElement('option')
+        optionEl.setAttribute('value', countryName)
+        dataListEl.appendChild(optionEl)
+    }
+})
+
 // *******************************************************
 
 // NOT WORKING ANYMORE, API ADDED PAYED SUBSCRIPTIONS
@@ -443,3 +470,5 @@ getCovidCountry()
 // })
 
 // *******************************************************
+
+
