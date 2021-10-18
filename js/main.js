@@ -276,7 +276,9 @@ countries.find(c => {
 
 // API URL FOR GETTING COVID STATS BY COUNTRY
 // const covidCountryURL = `https://corona.lmao.ninja/v2/countries/`
-const covidCountryURL = `https://corona.lmao.ninja/v3/covid-19/countries/`
+// const covidCountryURL = `https://corona.lmao.ninja/v3/covid-19/countries/`
+
+const covidCountryURL = `https://disease.sh/v3/covid-19/countries/`
 
 async function getCovidCountry(countryName = defaultCountry) {
 
